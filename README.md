@@ -1,6 +1,6 @@
 # Joshternet Specifications
 
-Open specifications for Josh identity and inter-Josh networking.
+Open specifications for Josh identity, participation, and inter-Josh networking.
 
 > **Specification status:** PRE-JOSH
 
@@ -26,11 +26,11 @@ The Joshternet is built around a few foundational ideas:
 
 Joshternet standards are developed as Joshternet RFCs.
 
-| RFC | Title | Status |
-| --- | --- | --- |
-| [RFC-JOSH-0000](rfcs/0000-the-joshternet.md) | The Joshternet | Draft |
-| [RFC-JOSH-0001](rfcs/0001-josh-identity.md) | Josh Identity | Draft |
-| [RFC-JOSH-0002](rfcs/0002-well-known-josh.md) | `/.well-known/josh` | Draft |
+| RFC                                           | Title               | Status |
+| --------------------------------------------- | ------------------- | ------ |
+| [RFC-JOSH-0000](rfcs/0000-the-joshternet.md)  | The Joshternet      | Draft  |
+| [RFC-JOSH-0001](rfcs/0001-josh-identity.md)   | Josh Identity       | Draft  |
+| [RFC-JOSH-0002](rfcs/0002-well-known-josh.md) | `/.well-known/josh` | Draft  |
 
 No RFCs have been accepted yet.
 
