@@ -14,7 +14,7 @@ It exists to make it easier for Joshes to discover one another, visit each other
 
 The network may also include non-Josh participants, services, and infrastructure that voluntarily participate without claiming Josh identity.
 
-The Joshternet is not a social network, identity provider, ranking system, or centralized publishing platform. It is a collection of open specifications that allow independently operated websites and services to identify themselves as participants and interoperate using ordinary web technologies.
+The Joshternet is not a social network, identity provider, ranking system, or centralized publishing platform. It is a collection of open specifications that allow independently operated websites and services to participate and interoperate using ordinary web technologies.
 
 This document defines the purpose, scope, terminology, architecture, and foundational principles of the Joshternet.
 
@@ -46,17 +46,16 @@ Joshternet
   +--> another Josh Node
 ```
 
-Other Joshternet Nodes may participate in supporting the network without representing a Josh.
+Other Joshternet Nodes may participate without representing a Josh.
 
 The network exists because discovering another interesting person on the web should not require an algorithm deciding that person is interesting.
 
 ## 2. Scope
 
-The Joshternet specifications may define mechanisms for:
+Joshternet specifications may define mechanisms for:
 
+* declaring participation;
 * declaring Josh identity;
-* declaring Joshternet participation;
-* describing participating websites and endpoints;
 * discovering participating Joshternet Nodes;
 * identifying Josh Nodes;
 * navigating between Josh Nodes;
@@ -66,9 +65,7 @@ The Joshternet specifications may define mechanisms for:
 * maintaining decentralized or federated registries;
 * providing optional services built on top of the network.
 
-Individual specifications define the behavior and representation of each mechanism.
-
-This document does not define the technical format of those mechanisms.
+Individual specifications define the behavior and representation of those mechanisms.
 
 ## 3. Non-Goals
 
@@ -97,19 +94,19 @@ Josh identity is based on self-identification.
 
 A person's name, spelling, language, transliteration, legal name, nickname, or historical relationship to the name Joshua MUST NOT by itself establish that person as a Josh.
 
-The detailed rules governing Josh identity are defined by **RFC-JOSH-0001**.
+RFC-JOSH-0001 defines Josh identity.
 
 ### 4.2 Participation Is Voluntary
 
 Participation in the Joshternet is voluntary.
 
-A participant may join, leave, or change their participation at any time.
+A participant may join or leave at any time.
 
 Participation does not establish Josh identity.
 
-A person MAY participate while affirming Josh identity, declining Josh identity, or leaving Josh identity undeclared according to RFC-JOSH-0001.
+A person MAY participate while affirming Josh identity, declining Josh identity, or leaving Josh identity undeclared.
 
-No registry, crawler, implementation, or other Joshternet service should claim that a person participates solely because their name appears to belong to the Josh family.
+RFC-JOSH-0002 defines the current machine-readable participation mechanism.
 
 ### 4.3 No Josh Outranks Another Josh
 
@@ -163,7 +160,7 @@ The minimum useful Joshternet implementation should remain small enough that an 
 
 No single Joshternet registry, server, organization, domain, or implementation should be necessary for the network to exist.
 
-Centralized services may provide useful indexes, registries, validators, search tools, navigation services, or other infrastructure, but they should remain replaceable.
+Centralized services may provide indexes, registries, validators, search tools, navigation services, or other useful infrastructure, but they should remain replaceable.
 
 The protocol is more important than any particular implementation of it.
 
@@ -179,7 +176,7 @@ Josh identity does not imply trustworthiness.
 
 Participation does not imply trustworthiness.
 
-A participant, node, registry, or service MAY refuse to interact with another participant or endpoint for security, safety, abuse, operational, or other legitimate reasons.
+A participant, node, registry, or service MAY refuse to interact with another participant or endpoint.
 
 Such a decision does not redefine another person's Josh identity.
 
@@ -191,41 +188,39 @@ Such a decision does not redefine another person's Josh identity.
 
 A person with **Affirmed Josh Identity** according to RFC-JOSH-0001.
 
-A Josh does not need to be actively participating in the Joshternet to remain a Josh.
+A Josh does not need to be participating in the Joshternet to remain a Josh.
 
 ### Participant
 
 A person voluntarily taking part in the Joshternet.
 
-A participant may have Affirmed, Declined, or Undeclared Josh Identity as defined by RFC-JOSH-0001.
+A participant may have Affirmed, Declined, or Undeclared Josh Identity.
 
 ### Non-Josh Participant
 
-A participant who explicitly has Declined Josh Identity according to RFC-JOSH-0001.
+A participant with Declined Josh Identity according to RFC-JOSH-0001.
 
-A Non-Josh Participant may participate in the Joshternet without being represented as a Josh.
+A Non-Josh Participant may participate without being represented as a Josh.
 
 ### Joshternet Node
 
-A website, service, application, or network endpoint participating in the Joshternet on behalf of a participant.
+An origin participating in the Joshternet.
 
-A participant may operate more than one Joshternet Node.
+RFC-JOSH-0002 defines the current version 1 mechanism by which an origin declares participation.
 
 ### Josh Node
 
-A Joshternet Node representing at least one participant with Affirmed Josh Identity according to RFC-JOSH-0001.
+A Joshternet Node associated with Affirmed Josh Identity according to RFC-JOSH-0001.
 
 Every Josh Node is a Joshternet Node.
 
-Not every Joshternet Node is necessarily a Josh Node.
+Not every Joshternet Node is a Josh Node.
 
-### Josh Identity Declaration
+### Joshternet Declaration
 
-A declaration representing a person's Josh identity.
+A machine-readable declaration published by an origin to participate in the Joshternet.
 
-The semantics of Josh identity are defined by RFC-JOSH-0001.
-
-The machine-readable representation of identity and participation is defined separately.
+RFC-JOSH-0002 defines the current version 1 Joshternet Declaration.
 
 ### Josh Registry
 
@@ -237,7 +232,7 @@ They are not authorities over Josh identity.
 
 ### Joshternet
 
-The collective network formed by interoperating Joshternet Nodes, Josh Nodes, registries, implementations, and services using the Joshternet specifications.
+The collective network formed by interoperating Joshternet Nodes, registries, implementations, and services using Joshternet specifications.
 
 ### Joshternet RFC
 
@@ -274,74 +269,55 @@ Nodes SHOULD remain capable of communicating or linking directly whenever the re
 
 The Joshternet does not require a large number of participants before inter-Josh networking can occur.
 
-Conceptually, the minimum functioning **inter-Josh network** consists of:
+Conceptually, the minimum functioning inter-Josh network consists of:
 
 1. two independently operated Josh Nodes;
-2. both participants voluntarily participating;
-3. both participants having Affirmed Josh Identity;
-4. both nodes implementing at least one compatible Joshternet specification;
-5. some mechanism allowing one node to discover or reach the other.
+2. both voluntarily participating;
+3. some mechanism allowing one node to discover or reach the other.
+
+Under the current version 1 protocol, participation is declared according to RFC-JOSH-0002.
 
 At that point, inter-Josh networking has occurred.
 
-Non-Josh Participants and general Joshternet Nodes may also participate in the network, provide infrastructure, contribute to specifications, or interact with Josh Nodes.
-
-They do not, by themselves, satisfy the minimum requirement for inter-Josh networking.
+Non-Josh Participants and other Joshternet Nodes may also participate in the network.
 
 Further scaling is an implementation detail.
 
 ## 8. Identity and Participation
 
-The Joshternet deliberately separates:
+The Joshternet separates Josh identity from participation.
 
-1. **name relationship;**
-2. **Josh identity;**
-3. **Joshternet participation.**
+A person may be a Josh without participating.
 
-Names such as Josh, Joshua, Joshuah, Josué, Yeshua, and other related names may have linguistic, historical, or cultural relationships.
+A person may participate without being a Josh.
 
-Those relationships do not determine Josh identity.
+A person may participate without declaring Josh identity.
 
-Josh identity does not determine participation.
+RFC-JOSH-0001 defines these identity semantics.
 
-Participation does not determine Josh identity.
-
-A person who considers themselves a Josh may affirm that identity.
-
-A person who does not consider themselves a Josh may explicitly decline that identity.
-
-A person may leave Josh identity undeclared.
-
-Any of those people may participate where permitted by the relevant Joshternet specification or service.
-
-No implementation may override a person's identity decision based solely on name analysis.
-
-RFC-JOSH-0001 defines the complete Josh identity and participation model.
+RFC-JOSH-0002 defines the current version 1 mechanism for an origin to declare participation and, optionally, Josh identity.
 
 ## 9. Discovery
 
 The Joshternet should support discovering participating nodes without requiring a single canonical directory.
 
-Possible discovery mechanisms include:
+Possible mechanisms include:
 
 * direct links;
 * registries;
 * standardized metadata;
-* well-known resources;
 * feeds;
 * referrals from other Joshternet Nodes.
 
-Discovery mechanisms are defined by later specifications.
-
-Discovery does not establish Josh identity.
+Discovery is separate from participation and identity.
 
 The existence of a registry does not make that registry the Joshternet.
 
+Specific discovery behavior is outside the scope of this RFC.
+
 ## 10. Inter-Josh Navigation
 
-One of the earliest goals of the Joshternet is to allow visitors to move naturally between independently operated Josh sites.
-
-Inter-Josh navigation specifically concerns navigation between **Josh Nodes**.
+The Joshternet may allow visitors to move between independently operated Josh Nodes.
 
 Navigation may include concepts such as:
 
@@ -351,33 +327,21 @@ Random Josh
 Next Josh
 ```
 
-The specific behavior and semantics of inter-Josh navigation are defined by **RFC-JOSH-0004**.
-
-No navigation implementation should imply that its ordering represents quality, importance, authority, reputation, or rank.
+Navigation order MUST NOT imply quality, importance, authority, reputation, or rank.
 
 Sometimes the next Josh is simply the next Josh.
 
+Specific navigation behavior is outside the scope of this RFC.
+
 ## 11. Privacy
 
-Joshternet implementations should expose only information that participants intentionally make public.
+Joshternet specifications SHOULD minimize required personal information.
 
-Specifications SHOULD minimize required personal information.
+Participation MUST NOT require publishing unnecessary personal information.
 
-Participation MUST NOT require publishing:
+A Josh should likewise be able to affirm Josh identity without being required to disclose information unrelated to that declaration.
 
-* a legal name;
-* physical location;
-* email address;
-* phone number;
-* date of birth;
-* government identifier;
-* private account identifier.
-
-A participant should be able to join the network without disclosing substantially more information than is necessary to operate or identify their participating endpoint.
-
-A Josh should likewise be able to affirm Josh identity without being required to disclose unnecessary personal information.
-
-The exact representation of identity and participation is defined by later specifications.
+Individual protocols define their own required public data.
 
 ## 12. Security and Trust
 
@@ -394,15 +358,11 @@ Implementations should account for ordinary web threats including:
 * injection attacks;
 * registry poisoning;
 * compromised domains;
-* stale identity information.
+* stale information.
 
-Participation in the Joshternet does not imply trust.
+Participation does not imply trust.
 
 Josh identity does not imply trust.
-
-A Josh is a network participant, not a security credential.
-
-A Non-Josh Participant is also not a security credential.
 
 Implementations MAY refuse to index, display, route to, communicate with, or otherwise interact with a participant or endpoint.
 
@@ -412,20 +372,9 @@ Such refusal MUST NOT redefine that person's Josh identity.
 
 The Joshternet is expected to evolve.
 
-Future RFCs may introduce optional capabilities including:
+Future specifications may introduce additional capabilities.
 
-* feed aggregation;
-* network status reporting;
-* Josh discovery APIs;
-* network maps;
-* validators;
-* command-line tools;
-* federated registries;
-* additional navigation mechanisms;
-* abuse and blocking mechanisms;
-* other forms of inter-Josh communication.
-
-Extensions should preserve compatibility with the foundational principles in this document.
+Extensions should preserve the foundational principles in this document.
 
 Features should not become mandatory merely because they are amusing.
 
@@ -441,7 +390,7 @@ Changes should be discussed openly through issues and pull requests before a spe
 
 During the initial bootstrap phase, founding maintainers may develop and revise foundational specifications before a broader community of participating Joshes exists.
 
-Later process documents may define additional lifecycle states, compatibility requirements, versioning rules, governance procedures, or community approval mechanisms.
+Future process specifications may define lifecycle states, compatibility requirements, versioning rules, governance procedures, or community approval mechanisms.
 
 Until such a process exists, changes should favor:
 
@@ -454,19 +403,17 @@ Until such a process exists, changes should favor:
 
 The absence of other Joshes must not create a procedural condition in which the first Josh is unable to build the Joshternet.
 
-## 15. Initial Specification Set
+## 15. Current Specification Set
 
-The initial Joshternet specification family is expected to include:
+The current Joshternet specification set is:
 
-| RFC           | Title                 | Purpose                                                          |
-| ------------- | --------------------- | ---------------------------------------------------------------- |
-| RFC-JOSH-0000 | The Joshternet        | Defines the network and its foundational principles              |
-| RFC-JOSH-0001 | Josh Identity         | Defines Josh identity and participation semantics                |
-| RFC-JOSH-0002 | `/.well-known/josh`   | Defines machine-readable identity and participation declarations |
-| RFC-JOSH-0003 | Josh Discovery        | Defines discovery and registry behavior                          |
-| RFC-JOSH-0004 | Inter-Josh Navigation | Defines navigation between Josh Nodes                            |
+| RFC           | Title               | Purpose                                                                     |
+| ------------- | ------------------- | --------------------------------------------------------------------------- |
+| RFC-JOSH-0000 | The Joshternet      | Defines the network and its foundational principles                         |
+| RFC-JOSH-0001 | Josh Identity       | Defines Josh identity and participation semantics                           |
+| RFC-JOSH-0002 | `/.well-known/josh` | Defines the current machine-readable participation and identity declaration |
 
-Additional RFCs should be created only when the network demonstrates a need for them.
+Additional RFCs are added as they are developed.
 
 ## 16. Foundational Statement
 
