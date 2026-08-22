@@ -24,13 +24,13 @@ The Joshternet is built around a few foundational ideas:
 
 Joshternet standards are developed as Joshternet RFCs.
 
-The initial specifications will cover:
-
-* **RFC-JOSH-0000:** The Joshternet
-* **RFC-JOSH-0001:** Josh Identity
-* **RFC-JOSH-0002:** `/.well-known/josh`
-* **RFC-JOSH-0003:** Josh Discovery
-* **RFC-JOSH-0004:** Inter-Josh Navigation
+| RFC | Title | Status |
+| --- | --- | --- |
+| [RFC-JOSH-0000](rfcs/0000-the-joshternet.md) | The Joshternet | Draft |
+| RFC-JOSH-0001 | Josh Identity | Planned |
+| RFC-JOSH-0002 | `/.well-known/josh` | Planned |
+| RFC-JOSH-0003 | Josh Discovery | Planned |
+| RFC-JOSH-0004 | Inter-Josh Navigation | Planned |
 
 No RFCs have been accepted yet.
 
