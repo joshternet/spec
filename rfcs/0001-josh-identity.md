@@ -10,7 +10,9 @@
 
 This document defines the identity model used by the Joshternet.
 
-Joshternet identity is based on voluntary self-identification. A person's name, spelling, nickname, language, transliteration, ancestry, etymology, or historical relationship to the name Joshua MUST NOT determine whether that person identifies as a Josh.
+Josh identity is based on voluntary self-identification.
+
+A person's name, spelling, nickname, language, transliteration, ancestry, etymology, or historical relationship to the name Joshua MUST NOT determine whether that person identifies as a Josh.
 
 A person may affirm Josh identity, explicitly decline Josh identity, or make no declaration at all.
 
@@ -18,27 +20,59 @@ Josh identity is separate from Joshternet participation.
 
 A person who explicitly declares that they are not a Josh MAY still participate in the Joshternet.
 
-These states and concepts are intentionally distinct.
-
 **Joshness is declared, never derived.**
 
 ## 1. Purpose
 
 The Joshternet exists primarily to connect Joshes and the independent places they maintain on the web.
 
-The word "Josh" represents a broad family of names, spellings, nicknames, transliterations, and linguistic variants. Attempting to determine Josh identity through a fixed list of names would be incomplete, culturally narrow, and inconsistent with the voluntary nature of the network.
+The word "Josh" represents a broad family of names, spellings, nicknames, transliterations, and linguistic variants.
 
-This specification therefore defines Josh identity as a declaration made by the person represented.
+Attempting to determine Josh identity through a fixed list of names would be incomplete, culturally narrow, and inconsistent with the voluntary nature of the network.
 
-It also recognizes that participation in the Joshternet does not itself make someone a Josh.
+This specification therefore defines Josh identity as something declared by the person represented.
 
-A non-Josh may participate, contribute, operate compatible infrastructure, interact with Joshes, or otherwise take part in the network while explicitly maintaining that they are not a Josh.
+It also establishes that participation in the Joshternet does not itself make someone a Josh.
+
+A non-Josh may participate, contribute, operate infrastructure, interact with Joshes, or otherwise take part in the network while continuing to identify as a non-Josh.
 
 The protocol does not decide who is a Josh.
 
 The person does.
 
-## 2. Identity and Participation
+## 2. Scope
+
+This RFC defines:
+
+* Josh identity states;
+* voluntary self-identification;
+* the distinction between identity and participation;
+* non-Josh participation;
+* identity authority;
+* changes to identity over time;
+* name and language considerations;
+* privacy expectations related to Josh identity;
+* requirements that dependent Joshternet specifications MUST preserve.
+
+This RFC does not define:
+
+* machine-readable formats;
+* serialization;
+* property or field names;
+* file formats;
+* network endpoints;
+* discovery protocols;
+* registry protocols;
+* navigation protocols;
+* transport mechanisms.
+
+Those concerns belong to other Joshternet specifications.
+
+## 3. Normative Language
+
+The key words **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, **MAY**, and **RECOMMENDED** describe requirements placed upon conforming Joshternet specifications and implementations.
+
+## 4. Identity and Participation
 
 Joshternet implementations MUST distinguish between:
 
@@ -47,46 +81,56 @@ Joshternet implementations MUST distinguish between:
 
 These concepts are independent.
 
-A person may be:
+A person may identify as a Josh without participating in the Joshternet.
 
-| Josh Identity | Participating | Meaning                                                 |
-| ------------- | ------------- | ------------------------------------------------------- |
-| Affirmed      | Yes           | A Josh participating in the Joshternet                  |
-| Affirmed      | No            | A Josh who is not participating                         |
-| Declined      | Yes           | A non-Josh participating in the Joshternet              |
-| Declined      | No            | A non-Josh who is not participating                     |
-| Undeclared    | Yes           | A participant who has made no Josh identity declaration |
-| Undeclared    | No            | No known identity or participation declaration          |
+A person may participate in the Joshternet without identifying as a Josh.
+
+A person may participate without making any declaration regarding Josh identity.
+
+A person may do neither.
+
+Conceptually:
+
+| Josh Identity | Participation | Meaning                                          |
+| ------------- | ------------- | ------------------------------------------------ |
+| Affirmed      | Active        | A Josh participating in the Joshternet           |
+| Affirmed      | Inactive      | A Josh who is not currently participating        |
+| Declined      | Active        | A non-Josh participating in the Joshternet       |
+| Declined      | Inactive      | A non-Josh who is not participating              |
+| Undeclared    | Active        | A participant who has not declared Josh identity |
+| Undeclared    | Inactive      | No known Josh identity or active participation   |
 
 Participation MUST NOT be interpreted as evidence of Josh identity.
 
-Josh identity MUST NOT automatically imply active participation.
+Josh identity MUST NOT automatically imply participation.
 
-## 3. Josh Identity States
+## 5. Josh Identity States
 
-Josh identity has three possible states:
+Josh identity has three states.
 
-| State          | Meaning                                                             |
-| -------------- | ------------------------------------------------------------------- |
-| **Affirmed**   | The person declares that they identify as a Josh.                   |
-| **Declined**   | The person explicitly declares that they do not identify as a Josh. |
-| **Undeclared** | No Josh identity declaration has been made.                         |
+### 5.1 Affirmed
 
-These states MUST NOT be treated as equivalent.
+The person explicitly identifies as a Josh.
 
-In particular:
+### 5.2 Declined
+
+The person explicitly states that they do not identify as a Josh.
+
+### 5.3 Undeclared
+
+No Josh identity declaration is known.
+
+These states are distinct.
 
 **Undeclared does not mean Declined.**
 
 **Declined does not mean Undeclared.**
 
-And:
+**Participation does not mean Affirmed.**
 
-**Participating does not mean Affirmed.**
+## 6. Affirmed Josh Identity
 
-## 4. Affirmed Josh Identity
-
-A person has **Affirmed Josh Identity** when they voluntarily declare themselves to be a Josh.
+A person has **Affirmed Josh Identity** when they voluntarily identify themselves as a Josh.
 
 An affirmed Josh MAY use:
 
@@ -94,10 +138,9 @@ An affirmed Josh MAY use:
 * Joshua;
 * another spelling or variation of Joshua;
 * a linguistic or transliterated form related to Joshua;
-* a nickname derived from another name;
-* another name entirely, provided that the person genuinely identifies themselves as a Josh.
-
-A registry or implementation MUST NOT reject an affirmative declaration solely because the person's name does not match an expected spelling.
+* a nickname;
+* a name not traditionally associated with Joshua;
+* any other name under which that person genuinely identifies as a Josh.
 
 For example, each of the following fictional people could legitimately affirm Josh identity:
 
@@ -109,23 +152,15 @@ Josué Exampleton
 Yeshua Exampleton
 ```
 
-Their spelling does not determine their Joshness.
+The spelling does not determine their Joshness.
 
-Their declaration does.
+Their self-identification does.
 
-## 5. Declined Josh Identity
+A Joshternet implementation MUST NOT reject an affirmative identity solely because a person's name does not match an expected spelling or naming convention.
+
+## 7. Declined Josh Identity
 
 A person has **Declined Josh Identity** when they explicitly state that they do not identify as a Josh.
-
-A declined declaration MUST take precedence over:
-
-* name matching;
-* linguistic analysis;
-* transliteration;
-* etymology;
-* previously indexed information;
-* registry assumptions;
-* third-party assertions.
 
 For example:
 
@@ -134,61 +169,25 @@ Name: Yeshua Exampleton
 Josh identity: Declined
 ```
 
-Even if an implementation determines that the name has a historical or linguistic relationship to Joshua, the person MUST NOT be represented as a Josh.
+Even if Yeshua Exampleton's name has a historical, linguistic, or etymological relationship to Joshua, that relationship does not override the person's declaration.
 
-The network does not get to explain to someone why they are technically a Josh.
+A declined identity MUST take precedence over:
 
-## 6. Non-Josh Participation
+* name matching;
+* linguistic analysis;
+* transliteration;
+* etymology;
+* naming databases;
+* previously indexed information;
+* directory assumptions;
+* automated inference;
+* third-party assertions.
 
-Declining Josh identity does not prohibit participation in the Joshternet.
-
-A person MAY explicitly declare themselves to be a non-Josh while participating in the network.
-
-Such a person is referred to by this specification as a **Non-Josh Participant**.
-
-A Non-Josh Participant MAY:
-
-* operate Joshternet-compatible infrastructure;
-* contribute to specifications;
-* maintain software or services;
-* participate in discussions;
-* interact with participating Joshes;
-* link to or navigate the Joshternet;
-* operate a compatible website or endpoint;
-* otherwise participate in the network.
-
-A Non-Josh Participant MUST NOT be represented as a Josh merely because they participate.
-
-Conceptually:
-
-```text
-Josh identity: Declined
-Joshternet participation: Active
-```
-
-is completely valid.
-
-The Joshternet is primarily for connecting Joshes.
-
-It is not necessarily only for Joshes.
-
-## 7. Joshing the Joshes
-
-A Non-Josh Participant MAY knowingly participate in the Joshternet while maintaining an explicit non-Josh identity.
-
-Such participation may, among other legitimate purposes, consist of interacting with, contributing to, or good-naturedly joshing the Joshes.
-
-This does not change their identity state.
-
-Participation in a network named after Josh is not sufficient evidence of Joshness.
-
-A conforming implementation MUST continue to respect an explicit Declined identity declaration regardless of the amount of joshing involved.
+The Joshternet does not get to explain to someone why they are technically a Josh.
 
 ## 8. Undeclared Josh Identity
 
-A person has **Undeclared Josh Identity** when no identity declaration has been made.
-
-An undeclared person MUST NOT automatically be considered either an affirmed Josh or a declined Josh.
+A person has **Undeclared Josh Identity** when no identity declaration is known.
 
 For example:
 
@@ -197,9 +196,9 @@ Name: Joshua Exampleton
 Josh identity: Undeclared
 ```
 
-An implementation may reasonably suspect that Joshua Exampleton could identify as a Josh.
+An implementation may recognize that the name Joshua is commonly associated with Josh.
 
-It may not claim that he does.
+It may not therefore claim that Joshua Exampleton identifies as a Josh.
 
 Similarly:
 
@@ -208,15 +207,57 @@ Name: Yeshua Exampleton
 Josh identity: Undeclared
 ```
 
-No inference should be made.
+No conclusion about Josh identity should be drawn.
 
-Undeclared means exactly that: no declaration is known.
+Undeclared means exactly that:
 
-## 9. Name Variants
+**No declaration is known.**
+
+## 9. Non-Josh Participation
+
+Declining Josh identity does not prohibit participation in the Joshternet.
+
+A person MAY explicitly identify as a non-Josh while participating in the network.
+
+Such a person is referred to by this specification as a **Non-Josh Participant**.
+
+A Non-Josh Participant MAY:
+
+* participate in Joshternet communities;
+* contribute to Joshternet specifications;
+* maintain Joshternet software;
+* operate compatible infrastructure;
+* interact with participating Joshes;
+* link to Joshternet resources;
+* navigate participating sites;
+* contribute to projects built around the network;
+* otherwise participate where permitted by the relevant specification or service.
+
+A Non-Josh Participant MUST NOT be represented as a Josh solely because they participate.
+
+The Joshternet exists primarily to connect Joshes.
+
+It is not necessarily only for Joshes.
+
+## 10. Joshing the Joshes
+
+A Non-Josh Participant MAY knowingly participate in the Joshternet while explicitly maintaining a non-Josh identity.
+
+Such participation may include interacting with, contributing to, or good-naturedly joshing the Joshes.
+
+This does not change the participant's identity state.
+
+Participation in a network named after Josh is not evidence of Joshness.
+
+The amount of joshing involved is likewise not evidence of Joshness.
+
+A conforming implementation MUST continue to respect a Declined identity regardless of how deeply a participant becomes involved in the Joshternet.
+
+## 11. Name Variants
 
 The Joshternet intentionally does not define an authoritative list of valid Josh names.
 
-Names related to the Josh family may include forms such as:
+Names associated with the broader Josh name family may include forms such as:
 
 * Josh;
 * Joshua;
@@ -232,129 +273,152 @@ Names related to the Josh family may include forms such as:
 * Yehoshua;
 * Yeshua;
 * Giosuè;
-* other spellings, transliterations, nicknames, or linguistic variants.
+* other spellings, transliterations, nicknames, and linguistic variants.
 
-This list is illustrative and MUST NOT be interpreted as exhaustive.
+This list is illustrative.
 
-Identifying as a Josh MUST NOT depend upon appearing in this list.
+It MUST NOT be interpreted as exhaustive.
 
-Likewise, appearing in this list MUST NOT automatically make someone a Josh.
+A person does not need to appear on this list to identify as a Josh.
 
-## 10. Self-Identification
+Appearing on this list does not make someone a Josh.
 
-A Josh identity declaration MUST represent the identity preference of the person being represented.
+## 12. Joshness Is Not a Naming Algorithm
 
-Third parties MUST NOT create an affirmative or declined Josh identity declaration on behalf of another person without that person's authorization.
+A conforming Joshternet implementation MUST NOT determine Josh identity solely by applying:
 
-A service MAY discover a website that appears to belong to someone named Josh.
+* regular expressions;
+* string matching;
+* phonetic matching;
+* language detection;
+* transliteration;
+* etymological databases;
+* genealogy;
+* nickname databases;
+* machine learning;
+* artificial intelligence;
+* another automated naming system.
 
-It MAY identify that website as a potential candidate for discovery.
+Such mechanisms MAY be useful for identifying people who might be interested in the Joshternet.
 
-It MUST NOT convert that observation into an affirmative Josh identity declaration without an authoritative declaration from the person or a resource they control.
+They MUST NOT be used as authoritative evidence of Josh identity.
 
-## 11. Authority
+Discovery and identity are separate concerns.
 
-For purposes of the Joshternet, the authoritative source of Josh identity is the person's own declaration.
+## 13. Self-Identification
 
-A declaration published through a mechanism defined by a Joshternet specification MAY be treated as authoritative when control of the associated website or endpoint has been reasonably established.
+A Josh identity declaration MUST represent the preference of the person being represented.
 
-A registry is not an authority over Josh identity.
+Third parties MUST NOT affirm or decline Josh identity on behalf of another person without authorization.
 
-A crawler is not an authority over Josh identity.
+Another Josh cannot appoint someone a Josh.
 
-A naming database is not an authority over Josh identity.
+A registry cannot appoint someone a Josh.
 
-A search engine is not an authority over Josh identity.
+A crawler cannot appoint someone a Josh.
 
-Another Josh is not an authority over somebody else's Josh identity.
+An algorithm cannot appoint someone a Josh.
 
-## 12. Participation
+The Joshternet organization cannot appoint someone a Josh.
 
-Joshternet participation is voluntary.
+Joshness originates with the person.
 
-A person MAY participate regardless of whether their Josh identity is:
+## 14. Identity Authority
 
-* Affirmed;
-* Declined;
-* Undeclared.
+For purposes of the Joshternet, the most authoritative source of Josh identity is the person's own current declaration.
 
-Likewise, a person MAY stop participating without changing their Josh identity.
+Other Joshternet specifications MAY define mechanisms through which declarations are published, discovered, or associated with participating endpoints.
 
-For example:
+Those mechanisms MUST preserve the semantics defined by this document.
+
+When conflicting identity information exists, implementations SHOULD prefer:
 
 ```text
-Josh identity: Affirmed
-Joshternet participation: Inactive
+Current authoritative self-identification
+                |
+                v
+Previous authoritative self-identification
+                |
+                v
+Undeclared
 ```
 
-may describe someone who still considers themselves a Josh but no longer wishes to maintain a Joshternet node.
+Inferred identity MUST NOT override explicit identity.
 
-Identity and network presence are not the same thing.
+Third-party claims MUST NOT override explicit identity.
 
-## 13. Changing Identity
+Participation status MUST NOT override explicit identity.
 
-A person MAY change their Josh identity state at any time.
+## 15. Changing Identity
 
-A person may transition between:
+A person MAY change their Josh identity at any time.
+
+Valid conceptual transitions include:
 
 ```text
 Undeclared -> Affirmed
 Undeclared -> Declined
+
 Affirmed   -> Declined
-Declined   -> Affirmed
 Affirmed   -> Undeclared
+
+Declined   -> Affirmed
 Declined   -> Undeclared
 ```
 
-Implementations SHOULD respect the most recent authoritative declaration available.
+A previous declaration MUST NOT permanently bind someone to a Josh identity.
 
-Registries SHOULD remove or update stale identity information within a reasonable period after discovering a changed declaration.
+Systems consuming Josh identity information SHOULD respect the most recent authoritative declaration available.
 
-A previous declaration MUST NOT permanently bind a person to a Josh identity.
+Joshness is voluntary.
 
-Joshness is voluntary and revocable.
+Joshness is revocable.
 
-## 14. Changing Participation
+## 16. Changing Participation
 
-A person MAY begin or end Joshternet participation independently of their Josh identity.
+Participation MAY begin or end independently of Josh identity.
 
 For example:
 
 ```text
-Josh identity: Declined
+Josh identity: Affirmed
 Participation: Active
 ```
 
 may later become:
 
 ```text
-Josh identity: Declined
+Josh identity: Affirmed
 Participation: Inactive
 ```
 
-without changing the person's declared non-Josh identity.
+without changing the person's Josh identity.
 
 Likewise:
 
 ```text
-Josh identity: Affirmed
+Josh identity: Declined
 Participation: Inactive
 ```
 
 may later become:
 
 ```text
-Josh identity: Affirmed
+Josh identity: Declined
 Participation: Active
 ```
 
-without requiring the person to reaffirm their Joshness.
+without making that person a Josh.
 
-## 15. Multiple Names
+Identity describes who someone says they are.
+
+Participation describes whether they are taking part.
+
+## 17. Multiple Names
 
 A person may use more than one name.
 
-For example, a fictional participant might use:
+For example:
 
 ```text
 Legal name: Joshua Exampleton
@@ -362,21 +426,23 @@ Display name: Josh
 Professional name: J. Exampleton
 ```
 
-Joshternet implementations SHOULD allow the participant to control the name presented publicly.
+Joshternet participation MUST NOT require publication of a legal name.
 
-Participation MUST NOT require publication of a legal name.
+A participant SHOULD be able to control how their name is presented by services built on the Joshternet.
 
-## 16. Display Names
+No particular version of a person's name determines Josh identity.
 
-A participant MAY provide a display name for use by Joshternet services.
+## 18. Display Names
+
+A participant MAY use a display name.
 
 A display name:
 
-* does not need to contain the word Josh;
+* does not need to contain "Josh";
 * does not need to match a legal name;
 * does not determine Josh identity;
 * does not determine participation;
-* SHOULD be treated as participant-controlled public metadata.
+* SHOULD be treated as participant-controlled information.
 
 For example:
 
@@ -385,7 +451,7 @@ Josh identity: Affirmed
 Display name: J. Exampleton
 ```
 
-remains a valid affirmative Josh identity.
+is valid.
 
 Likewise:
 
@@ -395,237 +461,180 @@ Display name: Alex Exampleton
 Participation: Active
 ```
 
-remains a valid Non-Josh Participant.
+is valid.
 
-## 17. Identity and Nodes
+## 19. Internationalization
+
+Joshternet implementations SHOULD support Unicode names.
+
+They SHOULD NOT assume that names are written using:
+
+* ASCII;
+* the Latin alphabet;
+* English spelling conventions;
+* Western name ordering.
+
+A participant MUST NOT be required to anglicize, shorten, translate, transliterate, or otherwise modify their name in order to participate.
+
+Josh identity is independent of writing system.
+
+## 20. Identity and Joshternet Nodes
 
 Josh identity applies to a person.
 
-Network participation may be represented by a website or network endpoint.
+Joshternet participation may occur through websites, services, applications, or other endpoints defined by later specifications.
 
-A Josh MAY operate multiple participating endpoints.
+A single person MAY participate through multiple endpoints.
 
-A Non-Josh Participant MAY also operate compatible infrastructure or endpoints where permitted by the relevant specification.
+A participating endpoint does not, by itself, establish whether its operator is a Josh.
 
-The terminology and technical representation of participating endpoints are defined by other Joshternet RFCs.
+A Josh may operate infrastructure.
 
-This RFC does not require that every Joshternet-compatible endpoint be operated by a Josh.
+A non-Josh may operate infrastructure.
 
-## 18. Illustrative Declaration Semantics
+Infrastructure has no Josh identity of its own.
 
-The machine-readable format for Joshternet declarations is defined by **RFC-JOSH-0002**.
+Later specifications define how participating endpoints express their relationship to people and to the network.
 
-The following examples are conceptual only.
+## 21. Discovery Is Not Identity
 
-An affirmative Josh identity could correspond to:
+A service MAY discover a website that appears to belong to someone with a Josh-related name.
 
-```json
-{
-  "josh": true
-}
-```
-
-An explicit non-Josh identity could correspond to:
-
-```json
-{
-  "josh": false
-}
-```
-
-An undeclared identity contains no Josh declaration:
-
-```json
-{
-  "name": "Joshua Exampleton"
-}
-```
-
-The absence of `josh` MUST NOT be interpreted as either `true` or `false`.
-
-Identity and participation may also be represented independently.
-
-Conceptually:
-
-```json
-{
-  "josh": false,
-  "participating": true
-}
-```
-
-means:
-
-```text
-I do not identify as a Josh.
-I am participating in the Joshternet.
-```
-
-Conversely:
-
-```json
-{
-  "josh": true,
-  "participating": false
-}
-```
-
-means:
-
-```text
-I identify as a Josh.
-I am not currently participating in the Joshternet.
-```
-
-These examples define semantics only.
-
-RFC-JOSH-0002 defines the normative machine-readable representation.
-
-## 19. Precedence
-
-When conflicting identity information exists, Joshternet implementations SHOULD apply the following precedence:
-
-```text
-Current authoritative self-declaration
-              |
-              v
-Older authoritative self-declaration
-              |
-              v
-No declaration
-```
-
-Name analysis, directory listings, third-party claims, participation status, and inferred identity MUST NOT override an authoritative self-declaration.
-
-In particular:
-
-```text
-josh: false
-```
-
-MUST override any inference that a person appears to have a Josh-related name.
-
-Likewise:
-
-```text
-participating: true
-```
-
-MUST NOT override:
-
-```text
-josh: false
-```
-
-The participant remains a participating non-Josh.
-
-## 20. Impersonation
-
-A Joshternet declaration MUST NOT be treated as proof of a person's legal identity.
-
-Joshternet identity establishes only the identity declaration associated with a participating endpoint.
-
-Implementations SHOULD distinguish between:
-
-* control of a website or endpoint;
-* Josh identity;
-* Joshternet participation;
-* legal or real-world identity verification.
-
-These are separate concerns.
-
-The Joshternet is not intended to become a legal identity system.
-
-## 21. Privacy
-
-A Josh identity or participation declaration SHOULD require as little personal information as possible.
-
-Participation MUST NOT require disclosure of:
-
-* a legal name;
-* physical address;
-* precise location;
-* phone number;
-* date of birth;
-* government-issued identification;
-* private email address;
-* employer;
-* family information.
-
-A Josh should be able to say:
-
-```text
-I am a Josh.
-This is my website.
-I want to participate in the Joshternet.
-```
-
-A non-Josh should likewise be able to say:
-
-```text
-I am not a Josh.
-This is my website.
-I still want to participate in the Joshternet.
-```
-
-Neither should require substantially more personal information.
-
-## 22. Registry Behavior
-
-Josh Registries MUST preserve the distinction between:
-
-* Affirmed;
-* Declined;
-* Undeclared;
-
-and SHOULD separately preserve participation state where that information is supported.
-
-A registry MUST NOT list an undeclared person as a Josh solely because of their name.
-
-A registry MUST NOT list a Declined participant as a Josh solely because they participate in the network.
-
-A Non-Josh Participant MAY appear in services where non-Josh participation is relevant, but MUST be clearly distinguishable from affirmed Joshes.
-
-Registries SHOULD avoid retaining information about people who have ceased participation except where retaining minimal information is necessary to prevent repeated rediscovery, unwanted enrollment, abuse, or other operational problems.
-
-Such records SHOULD contain the minimum information necessary.
-
-## 23. Crawlers and Discovery Services
-
-A crawler MAY discover potential Josh-related websites.
-
-Discovery alone does not establish Josh identity.
-
-A crawler finding:
+For example:
 
 ```text
 Joshua Exampleton
 https://example.invalid/
 ```
 
-does not constitute an affirmative Josh declaration.
+This discovery does not establish Josh identity.
 
-Likewise, discovering that a website participates in the Joshternet does not prove that its operator identifies as a Josh.
+A service MAY classify such a site as a potential candidate for invitation or further discovery.
 
-The crawler must locate an authoritative identity declaration before representing that person as an affirmed Josh.
+It MUST NOT represent the person as an affirmed Josh without an authoritative declaration.
 
-## 24. Internationalization
+Likewise, discovery of Joshternet-compatible infrastructure does not establish that its operator identifies as a Josh.
 
-Joshternet implementations SHOULD support Unicode names and SHOULD NOT assume that Josh-related names are written using ASCII or the Latin alphabet.
+## 22. Participation Is Not Identity
 
-Implementations MUST NOT require participants to anglicize, transliterate, or otherwise modify their names in order to participate.
+The presence of a person in:
 
-Josh identity is independent of writing system.
+* a Joshternet discussion;
+* a Joshternet repository;
+* a Joshternet-compatible service;
+* a Josh-related event;
+* a Josh directory;
+* another Joshternet community;
 
-## 25. Humor Is Not Identity
+does not establish Josh identity.
+
+People may participate for many reasons.
+
+Some may simply be joshing.
+
+## 23. Privacy
+
+Josh identity SHOULD require as little personal information as possible.
+
+A Joshternet specification MUST NOT require disclosure of:
+
+* a legal name;
+* physical address;
+* precise location;
+* phone number;
+* date of birth;
+* government identification;
+* private email address;
+* employer;
+* family information;
+
+solely to express Josh identity.
+
+A Josh should be able to communicate conceptually:
+
+```text
+I am a Josh.
+I want to participate.
+```
+
+A non-Josh should likewise be able to communicate:
+
+```text
+I am not a Josh.
+I still want to participate.
+```
+
+Neither should require substantially more personal information merely to establish those states.
+
+## 24. Impersonation
+
+Josh identity within the Joshternet is not proof of legal or real-world identity.
+
+Implementations MUST distinguish between:
+
+* Josh self-identification;
+* control of a website or endpoint;
+* participation in the Joshternet;
+* legal identity verification.
+
+These are separate concerns.
+
+Someone claiming to be a Josh does not prove who that person is.
+
+Someone proving control of a domain does not prove their legal name.
+
+The Joshternet is not a legal identity system.
+
+## 25. Trust
+
+Josh identity does not imply trust.
+
+Participation in the Joshternet does not imply trust.
+
+An implementation MAY refuse to interact with, index, display, or otherwise trust a participant or endpoint for operational, security, safety, or abuse-related reasons.
+
+Such a decision MUST NOT redefine that person's Josh identity.
+
+Whether someone is a Josh and whether another participant chooses to interact with them are separate concerns.
+
+**Interoperability does not require interaction.**
+
+## 26. Security Considerations
+
+Identity information MUST be treated as untrusted input.
+
+Implementations should account for:
+
+* impersonation;
+* forged declarations;
+* stale identity information;
+* compromised websites;
+* domain takeover;
+* malicious metadata;
+* registry poisoning;
+* unauthorized third-party declarations.
+
+Later specifications MAY define mechanisms for establishing control over Joshternet-compatible endpoints.
+
+Such mechanisms establish control of infrastructure.
+
+They do not establish the correctness of a person's legal identity.
+
+## 27. Humor Is Not Identity
 
 The Joshternet is intentionally playful.
 
-That does not make someone's identity a joke.
+That does not make an individual person's identity a joke.
 
-Implementations and community services SHOULD distinguish between humor about the existence of the Joshternet and humor directed at an individual person's name, language, culture, or identity.
+Implementations and communities SHOULD distinguish between humor about the Joshternet and humor directed at a person's:
 
-Non-Josh Participants may even participate specifically because the entire concept amuses them.
+* name;
+* language;
+* nationality;
+* culture;
+* identity.
+
+Non-Joshes may participate specifically because the entire concept amuses them.
 
 That is permitted.
 
@@ -633,60 +642,89 @@ The network may be ridiculous.
 
 Participation should still be respectful.
 
-## 26. Security Considerations
+## 28. Requirements for Dependent Specifications
 
-Identity and participation declarations are self-published metadata and MUST be treated as untrusted input.
+Specifications that depend upon Josh identity MUST preserve the semantics defined by this RFC.
 
-Implementations should account for:
+### 28.1 Three Identity States
 
-* impersonation;
-* forged declarations;
-* domain takeover;
-* stale declarations;
-* malicious metadata;
-* deceptive redirects;
-* registry poisoning.
+They MUST preserve the distinction between:
 
-A future specification MAY define stronger mechanisms for establishing control of a participating endpoint.
+* Affirmed;
+* Declined;
+* Undeclared.
 
-## 27. Relationship to Other RFCs
+### 28.2 Identity and Participation
 
-This RFC defines the semantics of Josh identity and its relationship to Joshternet participation.
+They MUST NOT treat Josh identity and Joshternet participation as the same state.
 
-The initial related specifications are expected to include:
+### 28.3 Non-Josh Participation
 
-| RFC           | Relationship                                           |
-| ------------- | ------------------------------------------------------ |
-| RFC-JOSH-0000 | Defines the Joshternet and its foundational principles |
-| RFC-JOSH-0001 | Defines Josh identity and participation semantics      |
-| RFC-JOSH-0002 | Defines the machine-readable declaration               |
-| RFC-JOSH-0003 | Defines discovery and registry behavior                |
-| RFC-JOSH-0004 | Defines navigation between participating endpoints     |
+They MUST permit the concept of a person participating while explicitly declining Josh identity.
 
-If another Joshternet specification conflicts with the voluntary identity principles established here, this specification SHOULD take precedence unless explicitly superseded by a later foundational RFC.
+### 28.4 No Inferred Joshness
 
-## 28. Foundational Identity Rules
+They MUST NOT convert name analysis, participation, or other inferred information into authoritative Josh identity.
 
-A conforming Joshternet implementation MUST preserve the following rules:
+### 28.5 Revocability
+
+They MUST allow newer authoritative identity information to supersede older identity information.
+
+### 28.6 Internationalization
+
+They MUST NOT require a particular Josh spelling, alphabet, language, or transliteration.
+
+### 28.7 Trust Independence
+
+They MUST NOT treat Josh identity as proof of trustworthiness.
+
+The exact machine-readable representation of these requirements is outside the scope of this RFC.
+
+## 29. Relationship to Other RFCs
+
+This RFC defines Josh identity semantics.
+
+The initial Joshternet specification family includes or is expected to include:
+
+| RFC           | Relationship                                                          |
+| ------------- | --------------------------------------------------------------------- |
+| RFC-JOSH-0000 | Defines the Joshternet and its foundational principles                |
+| RFC-JOSH-0001 | Defines Josh identity and participation semantics                     |
+| RFC-JOSH-0002 | Defines how compatible endpoints represent identity and participation |
+| RFC-JOSH-0003 | Defines discovery and registry behavior                               |
+| RFC-JOSH-0004 | Defines inter-Josh navigation                                         |
+
+RFC-JOSH-0002 MUST preserve the semantic distinctions established by this document, but owns their machine-readable representation.
+
+RFC-JOSH-0003 MUST preserve the distinction between discovery and authoritative identity.
+
+Later specifications MUST NOT redefine someone as a Josh merely because doing so would make implementation easier.
+
+## 30. Foundational Identity Rules
+
+A conforming Joshternet specification or implementation MUST preserve the following rules:
 
 1. **Joshness is declared, never derived.**
 2. Josh identity and Joshternet participation are separate concepts.
 3. A person MAY affirm Josh identity.
 4. A person MAY explicitly decline Josh identity.
-5. A person MAY make no Josh identity declaration.
+5. A person MAY leave Josh identity undeclared.
 6. Undeclared identity MUST NOT be interpreted as Affirmed or Declined.
-7. A person MAY participate in the Joshternet while declaring that they are not a Josh.
+7. A person MAY participate while explicitly declining Josh identity.
 8. Participation MUST NOT be interpreted as evidence of Josh identity.
 9. Name spelling MUST NOT determine Josh identity.
 10. Name origin MUST NOT determine Josh identity.
-11. A self-declaration MUST take precedence over inferred identity.
-12. A participant MAY change or withdraw their declaration.
-13. A participant MAY begin or end participation independently of their identity.
-14. No implementation may appoint someone a Josh against their wishes.
-15. `josh: false` MUST remain valid even when that person is actively participating in the Joshternet.
+11. Language MUST NOT determine Josh identity.
+12. Automated inference MUST NOT override self-identification.
+13. Current authoritative self-identification takes precedence over inferred identity.
+14. A person MAY change or withdraw their identity declaration.
+15. A person MAY begin or end participation independently of identity.
+16. Josh identity MUST NOT imply trust.
+17. A participant or service MAY decline interaction without redefining another person's identity.
+18. No person, registry, crawler, service, organization, algorithm, or other Josh may appoint someone a Josh against their wishes.
 
 The Joshternet may connect the Joshes.
 
 Non-Joshes may come along for the ride.
 
-The network still does not get to decide who anyone is.
+It still does not get to decide who anyone is.
