@@ -32,7 +32,7 @@ Attempting to determine Josh identity through a fixed list of names would be inc
 
 This specification therefore defines Josh identity as something declared by the person represented.
 
-It also establishes that participation in the Joshternet does not itself make someone a Josh.
+Participation in the Joshternet does not itself make someone a Josh.
 
 A non-Josh may participate, contribute, operate infrastructure, interact with Joshes, or otherwise take part in the network while continuing to identify as a non-Josh.
 
@@ -54,23 +54,13 @@ This RFC defines:
 * privacy expectations related to Josh identity;
 * requirements that dependent Joshternet specifications MUST preserve.
 
-This RFC does not define:
+This RFC does not define machine-readable formats, serialization, network endpoints, discovery, registries, navigation, or transport mechanisms.
 
-* machine-readable formats;
-* serialization;
-* property or field names;
-* file formats;
-* network endpoints;
-* discovery protocols;
-* registry protocols;
-* navigation protocols;
-* transport mechanisms.
-
-Those concerns belong to other Joshternet specifications.
+RFC-JOSH-0002 defines the current machine-readable mechanism used by a participating origin.
 
 ## 3. Normative Language
 
-The key words **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, **MAY**, and **RECOMMENDED** describe requirements placed upon conforming Joshternet specifications and implementations.
+The key words **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** describe requirements placed upon conforming Joshternet specifications and implementations.
 
 ## 4. Identity and Participation
 
@@ -103,6 +93,8 @@ Conceptually:
 Participation MUST NOT be interpreted as evidence of Josh identity.
 
 Josh identity MUST NOT automatically imply participation.
+
+RFC-JOSH-0002 defines how an origin currently declares active participation.
 
 ## 5. Josh Identity States
 
@@ -327,27 +319,15 @@ Joshness originates with the person.
 
 For purposes of the Joshternet, the most authoritative source of Josh identity is the person's own current declaration.
 
-Other Joshternet specifications MAY define mechanisms through which declarations are published, discovered, or associated with participating endpoints.
+A Joshternet protocol MAY define a mechanism through which that declaration is published by infrastructure controlled by the participant.
 
-Those mechanisms MUST preserve the semantics defined by this document.
-
-When conflicting identity information exists, implementations SHOULD prefer:
-
-```text
-Current authoritative self-identification
-                |
-                v
-Previous authoritative self-identification
-                |
-                v
-Undeclared
-```
+RFC-JOSH-0002 defines the current version 1 mechanism for participating origins.
 
 Inferred identity MUST NOT override explicit identity.
 
 Third-party claims MUST NOT override explicit identity.
 
-Participation status MUST NOT override explicit identity.
+Participation MUST NOT override explicit identity.
 
 ## 15. Changing Identity
 
@@ -414,6 +394,8 @@ Identity describes who someone says they are.
 
 Participation describes whether they are taking part.
 
+RFC-JOSH-0002 represents active participation through publication of its defined resource. It does not require an inactive participant to publish a declaration of inactivity.
+
 ## 17. Multiple Names
 
 A person may use more than one name.
@@ -463,6 +445,8 @@ Participation: Active
 
 is valid.
 
+This RFC does not require a particular protocol to publish a display name.
+
 ## 19. Internationalization
 
 Joshternet implementations SHOULD support Unicode names.
@@ -482,23 +466,19 @@ Josh identity is independent of writing system.
 
 Josh identity applies to a person.
 
-Joshternet participation may occur through websites, services, applications, or other endpoints defined by later specifications.
+A Joshternet Node is participating infrastructure as defined by RFC-JOSH-0000.
 
-A single person MAY participate through multiple endpoints.
+A single person MAY participate through multiple nodes.
 
-A participating endpoint does not, by itself, establish whether its operator is a Josh.
+A participating node does not, by itself, establish that its participant is a Josh.
 
-A Josh may operate infrastructure.
-
-A non-Josh may operate infrastructure.
+RFC-JOSH-0002 defines the current version 1 mechanism by which an origin declares participation and may publish Josh identity.
 
 Infrastructure has no Josh identity of its own.
 
-Later specifications define how participating endpoints express their relationship to people and to the network.
-
 ## 21. Discovery Is Not Identity
 
-A service MAY discover a website that appears to belong to someone with a Josh-related name.
+Discovering a website, endpoint, or person does not establish Josh identity.
 
 For example:
 
@@ -507,13 +487,13 @@ Joshua Exampleton
 https://example.invalid/
 ```
 
-This discovery does not establish Josh identity.
+does not constitute an Affirmed Josh identity declaration.
 
-A service MAY classify such a site as a potential candidate for invitation or further discovery.
+A service MUST NOT represent someone as an affirmed Josh solely because their name appears Josh-related.
 
-It MUST NOT represent the person as an affirmed Josh without an authoritative declaration.
+Where RFC-JOSH-0002 is used, the identity declaration published by the participating origin provides the applicable Josh identity state for that declaration.
 
-Likewise, discovery of Joshternet-compatible infrastructure does not establish that its operator identifies as a Josh.
+Discovery remains a separate concern.
 
 ## 22. Participation Is Not Identity
 
@@ -614,11 +594,7 @@ Implementations should account for:
 * registry poisoning;
 * unauthorized third-party declarations.
 
-Later specifications MAY define mechanisms for establishing control over Joshternet-compatible endpoints.
-
-Such mechanisms establish control of infrastructure.
-
-They do not establish the correctness of a person's legal identity.
+Control of infrastructure and legal identity are separate concerns.
 
 ## 27. Humor Is Not Identity
 
@@ -678,27 +654,15 @@ They MUST NOT require a particular Josh spelling, alphabet, language, or transli
 
 They MUST NOT treat Josh identity as proof of trustworthiness.
 
-The exact machine-readable representation of these requirements is outside the scope of this RFC.
+RFC-JOSH-0002 defines the current machine-readable representation used by participating origins while preserving these requirements.
 
-## 29. Relationship to Other RFCs
+## 29. Relationship to Other Joshternet RFCs
 
-This RFC defines Josh identity semantics.
+RFC-JOSH-0000 defines the Joshternet and its foundational terminology.
 
-The initial Joshternet specification family includes or is expected to include:
+RFC-JOSH-0001 defines Josh identity semantics.
 
-| RFC           | Relationship                                                          |
-| ------------- | --------------------------------------------------------------------- |
-| RFC-JOSH-0000 | Defines the Joshternet and its foundational principles                |
-| RFC-JOSH-0001 | Defines Josh identity and participation semantics                     |
-| RFC-JOSH-0002 | Defines how compatible endpoints represent identity and participation |
-| RFC-JOSH-0003 | Defines discovery and registry behavior                               |
-| RFC-JOSH-0004 | Defines inter-Josh navigation                                         |
-
-RFC-JOSH-0002 MUST preserve the semantic distinctions established by this document, but owns their machine-readable representation.
-
-RFC-JOSH-0003 MUST preserve the distinction between discovery and authoritative identity.
-
-Later specifications MUST NOT redefine someone as a Josh merely because doing so would make implementation easier.
+RFC-JOSH-0002 defines the current version 1 machine-readable participation and identity declaration.
 
 ## 30. Foundational Identity Rules
 
