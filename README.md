@@ -27,7 +27,7 @@ Joshternet standards are developed as Joshternet RFCs.
 | RFC | Title | Status |
 | --- | --- | --- |
 | [RFC-JOSH-0000](rfcs/0000-the-joshternet.md) | The Joshternet | Draft |
-| RFC-JOSH-0001 | Josh Identity | Planned |
+| [RFC-JOSH-0001](rfcs/0001-josh-identity.md) | Josh Identity | Draft |
 | RFC-JOSH-0002 | `/.well-known/josh` | Planned |
 | RFC-JOSH-0003 | Josh Discovery | Planned |
 | RFC-JOSH-0004 | Inter-Josh Navigation | Planned |
