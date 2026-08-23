@@ -34,6 +34,24 @@ Joshternet standards are developed as Joshternet RFCs.
 
 No RFCs have been accepted yet.
 
+## Implementations
+
+Known implementations of Joshternet specifications:
+
+| Site                                            | Specification           | Status      |
+| ----------------------------------------------- | ----------------------- | ----------- |
+| [joshuamorris.info](https://joshuamorris.info/) | RFC-JOSH-0002 version 1 | Operational |
+
+The implementation publishes its Joshternet declaration at:
+
+```text
+https://joshuamorris.info/.well-known/josh
+```
+
+Implementations are listed for reference only.
+
+Inclusion does not grant authority, special status, or precedence within the Joshternet.
+
 ## Development
 
 Specifications are developed publicly through issues, discussion, and pull requests.
