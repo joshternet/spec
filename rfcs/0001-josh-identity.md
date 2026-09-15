@@ -5,6 +5,7 @@
 **Created:** August 22, 2026
 **Author:** Joshua Morris
 **Organization:** Joshternet
+**License:** CC BY 4.0
 
 ## Abstract
 

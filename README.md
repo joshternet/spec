@@ -36,21 +36,29 @@ No RFCs have been accepted yet.
 
 ## Implementations
 
-Known implementations of Joshternet specifications:
+Known operational implementations of RFC-JOSH-0002 version 1:
 
-| Site                                            | Specification           | Status      |
-| ----------------------------------------------- | ----------------------- | ----------- |
-| [joshuamorris.info](https://joshuamorris.info/) | RFC-JOSH-0002 version 1 | Operational |
+| Site | Identity | Status |
+| --- | --- | --- |
+| [joshuamorris.info](https://joshuamorris.info/) | Affirmed Josh Identity | Operational |
+| [joshternet.org](https://joshternet.org/) | Undeclared Josh Identity | Operational |
 
-The implementation publishes its Joshternet declaration at:
+Their Joshternet declarations are published at:
 
-```text
-https://joshuamorris.info/.well-known/josh
-```
+- `https://joshuamorris.info/.well-known/josh`
+- `https://joshternet.org/.well-known/josh`
 
-Implementations are listed for reference only.
+Both origins participate according to RFC-JOSH-0002. Their different identity states demonstrate that participation and Josh identity are separate.
 
-Inclusion does not grant authority, special status, or precedence within the Joshternet.
+Implementations are listed for reference only. Inclusion does not grant authority, special status, or precedence within the Joshternet.
+
+## Related software
+
+[JoshBot](https://github.com/joshternet/joshbot) is the Joshternet discovery, verification, and public registry crawler.
+
+JoshBot verifies `/.well-known/josh` declarations and can produce deterministic public registry data. It is implementation infrastructure, not a specification, and its behavior does not define participation or Josh identity.
+
+The first supported JoshBot release is [v1.0.0](https://github.com/joshternet/joshbot/releases/tag/v1.0.0).
 
 ## Development
 
@@ -59,3 +67,11 @@ Specifications are developed publicly through issues, discussion, and pull reque
 Future RFCs are added as they are developed rather than reserved in advance.
 
 The Joshternet is currently in its **PRE-JOSH** phase while the foundational standards are being defined.
+
+## License
+
+The Joshternet specifications and repository documentation are licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+This permits others to share and adapt the specifications, including for commercial purposes, with attribution and an indication of changes.
+
+See [LICENSE.md](LICENSE.md).
