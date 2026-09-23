@@ -29,7 +29,7 @@ This RFC does not define discovery, registries, navigation, profiles, feeds, tru
 
 ## 2. Normative Language
 
-The key words **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** are to be interpreted as described by BCP 14 when they appear in uppercase.
+The key words **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** in this document are to be interpreted as described by BCP 14 when, and only when, they appear in all capitals, as shown here.
 
 ## 3. Resource Location
 
@@ -51,11 +51,53 @@ the declaration is:
 https://example.invalid/.well-known/josh
 ```
 
+For purposes of this RFC, an origin has the meaning defined by RFC 6454.
+
 The declaration applies only to the origin from which it is retrieved.
 
 Different origins, including subdomains, publish their own declarations.
 
+### 3.1 URI Schemes and Ports
+
+The well-known URI defined by this RFC is used with the `http` and `https` URI schemes.
+
+A declaration is retrieved using the scheme, host, and port of the origin being evaluated.
+
+If an origin uses a non-default port, the declaration is retrieved from that same port.
+
+For example, the declaration for:
+
+```text
+https://example.invalid:8443/
+```
+
+is:
+
+```text
+https://example.invalid:8443/.well-known/josh
+```
+
+This protocol does not define discovery of alternate ports.
+
+Consumers MUST NOT probe alternate ports in an attempt to locate a declaration.
+
+### 3.2 Path
+
+The well-known URI suffix defined by this specification is:
+
+```text
+josh
+```
+
+The canonical path is:
+
+```text
+/.well-known/josh
+```
+
 The canonical path does not include a trailing slash.
+
+This protocol defines no additional path components, query parameters, or fragment identifiers for the declaration URI.
 
 ## 4. Participation
 
@@ -71,12 +113,11 @@ Publication and removal of the resource do not change a person's Josh identity a
 
 The resource MUST contain a JSON object conforming to RFC 8259.
 
-A version 1 declaration contains:
+The associated media type for the declaration is:
 
-| Member    | Required | Type    |
-| --------- | -------- | ------- |
-| `version` | Yes      | integer |
-| `josh`    | No       | boolean |
+```text
+application/json
+```
 
 A server SHOULD return:
 
@@ -84,11 +125,20 @@ A server SHOULD return:
 Content-Type: application/json
 ```
 
+A version 1 declaration contains:
+
+| Member    | Required | Type    |
+| --------- | -------- | ------- |
+| `version` | Yes      | integer |
+| `josh`    | No       | boolean |
+
 ## 6. Version
 
 The `version` member MUST be present.
 
-For this specification its value MUST be the integer:
+The `version` member MUST use the RFC 8259 `number` production without a `frac` or `exp` component.
+
+For this specification its value MUST be:
 
 ```json
 {
@@ -96,7 +146,9 @@ For this specification its value MUST be the integer:
 }
 ```
 
-A consumer that does not support the declared version MUST NOT interpret the declaration using version 1 semantics.
+Values such as `1.0` and `1e0` are not valid version 1 declarations.
+
+A consumer that does not support the declared integer version MUST NOT interpret the declaration using version 1 semantics.
 
 ## 7. Josh Identity
 
@@ -256,6 +308,20 @@ https://other.example.invalid/
 
 unless those origins publish their own declarations.
 
+A declaration also does not apply to a different port on the same host.
+
+For example:
+
+```text
+https://example.invalid/.well-known/josh
+```
+
+does not declare participation for:
+
+```text
+https://example.invalid:8443/
+```
+
 ## 15. Multiple Origins
 
 A participant MAY publish declarations from more than one origin.
@@ -280,9 +346,29 @@ An origin that cannot appropriately represent a single Josh identity MAY partici
 
 Consumers MUST treat declaration contents as untrusted input.
 
-Consumers SHOULD apply reasonable limits to response size and parsing resources.
+Consumers SHOULD apply reasonable limits to response size, parsing resources, redirects, and retrieval time.
 
-Retrieving a declaration from an origin does not establish legal identity, trustworthiness, or authority beyond control of that origin.
+Because a declaration represents the origin serving it, server operators SHOULD restrict the ability to create or modify `/.well-known/josh` to parties authorized to speak for that origin.
+
+A declaration is publicly retrievable.
+
+Publishers MUST NOT include information in a declaration that requires confidentiality.
+
+Declarations retrieved over plain HTTP are not protected against modification by an on-path attacker.
+
+Consumers that require authenticated transport SHOULD use HTTPS origins and perform normal TLS certificate validation.
+
+Automated consumers that retrieve declarations from untrusted or user-supplied origins SHOULD protect local network boundaries against server-side request forgery and similar attacks.
+
+Such consumers SHOULD account for loopback, link-local, private, reserved, and otherwise non-public network destinations, including DNS rebinding between address validation and connection establishment.
+
+Consumers MUST NOT extend a declaration's authority to another origin.
+
+A cross-origin redirect, shared hostname, related domain name, or apparent organizational relationship does not grant one origin authority to declare participation or Josh identity for another.
+
+Retrieving a declaration from an origin establishes only that the origin is publishing the declaration.
+
+It does not establish legal identity, trustworthiness, reputation, authority over another origin, or authority within the Joshternet.
 
 The security and trust principles defined by RFC-JOSH-0000 and RFC-JOSH-0001 remain applicable.
 
@@ -300,6 +386,8 @@ The minimum valid declaration is:
 
 Additional personal or profile metadata is outside the scope of this RFC.
 
+Because the declaration is intentionally public, publishers should consider the privacy implications of any unknown or extension members they choose to include.
+
 ## 19. Extensibility
 
 Version 1 intentionally defines only the minimum declaration necessary for Joshternet participation and Josh identity.
@@ -310,17 +398,27 @@ An incompatible future representation MUST use a new version number.
 
 ## 20. IANA Considerations
 
-This specification proposes the well-known URI suffix:
+This document requests registration of the following value in the IANA "Well-Known URIs" registry defined by RFC 8615.
 
-```text
-josh
-```
+| Field | Value |
+| --- | --- |
+| URI suffix | `josh` |
+| Change controller | Joshua Morris, Joshternet, https://joshternet.org/ |
+| Specification document(s) | RFC-JOSH-0002, this document |
+| Status | provisional |
+| Related information | https://joshternet.org/ |
 
-for use under the `/.well-known/` namespace defined by RFC 8615.
+The associated media type is `application/json`.
 
-This Draft does not claim that the suffix has been registered with IANA.
+The well-known URI is used with the `http` and `https` URI schemes.
 
-Registration SHOULD be pursued before this specification is represented as using a formally registered well-known URI.
+This specification defines no additional path components, query parameters, or fragment identifiers for the registered URI.
+
+Provisional status is requested while RFC-JOSH-0002 remains a Joshternet Draft and deployment of the protocol continues to develop.
+
+Registration in the IANA Well-Known URIs registry coordinates use of the `josh` suffix. It does not change the Joshternet status of this specification or imply endorsement of the Joshternet by the IETF or IANA.
+
+Until the registration appears in the IANA Well-Known URIs registry, this document does not claim that `josh` is registered.
 
 ## 21. Relationship to Other Joshternet RFCs
 
@@ -337,15 +435,17 @@ Discovery, registries, navigation, and other network behavior are outside the sc
 A version 1 declaration follows these rules:
 
 1. The resource is located at `/.well-known/josh`.
-2. A valid published resource declares participation.
-3. `version` is required and MUST equal the integer `1`.
-4. `josh` is optional.
-5. `josh: true` represents Affirmed Josh Identity.
-6. `josh: false` represents Declined Josh Identity.
-7. An absent `josh` member represents Undeclared Josh Identity.
-8. No separate participation property exists.
-9. Removing the resource ends the origin's declaration of participation.
-10. The declaration applies only to the origin serving it.
+2. The resource uses the `http` or `https` scheme of the participating origin.
+3. A valid published resource declares participation.
+4. `version` is required, MUST use the integer-number syntax defined in Section 6, and MUST have the value `1`.
+5. `josh` is optional.
+6. `josh: true` represents Affirmed Josh Identity.
+7. `josh: false` represents Declined Josh Identity.
+8. An absent `josh` member represents Undeclared Josh Identity.
+9. No separate participation property exists.
+10. Removing the resource ends the origin's declaration of participation.
+11. The declaration applies only to the origin serving it.
+12. The associated media type is `application/json`.
 
 Minimum participating Joshternet Node:
 
@@ -368,6 +468,7 @@ Minimum Josh Node:
 
 ### Normative References
 
+* RFC 6454 — The Web Origin Concept.
 * RFC 8259 — The JavaScript Object Notation (JSON) Data Interchange Format.
 * RFC 8615 — Well-Known Uniform Resource Identifiers (URIs).
 * BCP 14 — Requirement terminology defined by RFC 2119 and RFC 8174.
