@@ -36,21 +36,47 @@ No RFCs have been accepted yet.
 
 ## Implementations
 
-Known operational implementations of RFC-JOSH-0002 version 1:
+Known operational publishers of RFC-JOSH-0002 version 1:
 
-| Site | Identity | Status |
-| --- | --- | --- |
-| [joshuamorris.info](https://joshuamorris.info/) | Affirmed Josh Identity | Operational |
-| [joshternet.org](https://joshternet.org/) | Undeclared Josh Identity | Operational |
+| Site | Identity | Operation | Status |
+| --- | --- | --- | --- |
+| [joshuamorris.info](https://joshuamorris.info/) | Affirmed Josh Identity | Project-controlled | Operational |
+| [joshternet.org](https://joshternet.org/) | Undeclared Josh Identity | Project-controlled | Operational |
+| [joshtronic.com](https://joshtronic.com/) | Affirmed Josh Identity | Independent | Operational |
+| [www.joshuabaker.com](https://www.joshuabaker.com/) | Affirmed Josh Identity | Independent | Operational |
 
 Their Joshternet declarations are published at:
 
 - `https://joshuamorris.info/.well-known/josh`
 - `https://joshternet.org/.well-known/josh`
+- `https://joshtronic.com/.well-known/josh`
+- `https://www.joshuabaker.com/.well-known/josh`
 
-Both origins participate according to RFC-JOSH-0002. Their different identity states demonstrate that participation and Josh identity are separate.
+All four origins currently publish valid RFC-JOSH-0002 version 1 declarations.
 
-Implementations are listed for reference only. Inclusion does not grant authority, special status, or precedence within the Joshternet.
+Their different deployments and identity states demonstrate that participation
+is not tied to a particular hosting stack, operator, or Josh identity state.
+
+Implementations are listed for reference only. Inclusion does not grant
+authority, special status, or precedence within the Joshternet.
+
+## Interoperability
+
+The repository maintains non-normative implementation evidence separately from
+the protocol specification.
+
+See
+[RFC-JOSH-0002 version 1 interoperability evidence](interoperability/rfc-josh-0002/v1/README.md)
+for observed publisher deployments, JoshBot consumer conformance, independent
+implementation status, and the limitations of the current interoperability
+evidence.
+
+The current evidence includes independently operated publishers and a
+project-controlled consumer. No independently authored RFC-JOSH-0002 consumer
+is currently documented.
+
+The interoperability record does not define protocol behavior. RFC-JOSH-0002
+remains authoritative.
 
 ## Related software
 
