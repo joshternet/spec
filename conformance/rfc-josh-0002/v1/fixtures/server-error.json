@@ -1,0 +1,29 @@
+{
+  "id": "server-error",
+  "description": "A temporary server error does not establish that the declaration has been intentionally withdrawn.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "9",
+    "11"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "response": {
+        "status": 503,
+        "headers": [],
+        "body": ""
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "temporary-failure",
+    "participation": "indeterminate",
+    "identity": "not-applicable"
+  }
+}

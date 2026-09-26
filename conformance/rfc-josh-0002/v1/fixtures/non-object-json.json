@@ -1,0 +1,34 @@
+{
+  "id": "non-object-json",
+  "description": "A declaration response containing valid JSON whose top-level value is not an object.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "5",
+    "12"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "response": {
+        "status": 200,
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": "[{\"version\":1}]"
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "invalid",
+    "participation": "not-declared",
+    "identity": "not-applicable"
+  }
+}

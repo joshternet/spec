@@ -1,0 +1,39 @@
+{
+  "id": "declined",
+  "description": "A valid version 1 declaration with declined Josh identity.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "4",
+    "5",
+    "6",
+    "7.2",
+    "8",
+    "9",
+    "12"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "response": {
+        "status": 200,
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": "{\"version\":1,\"josh\":false}"
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "valid-v1",
+    "participation": "declared",
+    "identity": "declined"
+  }
+}

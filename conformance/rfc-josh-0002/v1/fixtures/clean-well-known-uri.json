@@ -1,0 +1,35 @@
+{
+  "id": "clean-well-known-uri",
+  "description": "A consumer retrieves the declaration from the canonical /.well-known/josh path without a trailing slash, query string, fragment, or additional path component.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "3",
+    "3.2",
+    "9"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "response": {
+        "status": 200,
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": "{\"version\":1}"
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "valid-v1",
+    "participation": "declared",
+    "identity": "undeclared"
+  }
+}

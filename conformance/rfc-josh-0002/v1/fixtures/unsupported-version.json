@@ -1,0 +1,35 @@
+{
+  "id": "unsupported-version",
+  "description": "A declaration that uses an integer protocol version not supported by the version 1 consumer.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "6",
+    "12",
+    "19"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "response": {
+        "status": 200,
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": "{\"version\":2,\"josh\":true}"
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "unsupported-version",
+    "participation": "indeterminate",
+    "identity": "not-applicable"
+  }
+}

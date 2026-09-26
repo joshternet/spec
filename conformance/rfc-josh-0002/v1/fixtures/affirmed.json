@@ -1,0 +1,39 @@
+{
+  "id": "affirmed",
+  "description": "A valid version 1 declaration with affirmed Josh identity.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "4",
+    "5",
+    "6",
+    "7.1",
+    "8",
+    "9",
+    "12"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "response": {
+        "status": 200,
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": "{\"version\":1,\"josh\":true}"
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "valid-v1",
+    "participation": "declared",
+    "identity": "affirmed"
+  }
+}
