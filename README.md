@@ -12,15 +12,15 @@ The Joshternet is a decentralized network for connecting people who identify as 
 
 The Joshternet is built around a few foundational ideas:
 
-* **Joshness is declared, never derived.**
-* Participation is voluntary.
-* Identity and participation are separate.
-* Participants retain control of their own websites and infrastructure.
-* No Josh outranks another Josh.
-* Participation does not imply trust.
-* Open and boring web standards are preferred over proprietary infrastructure.
-* Participation should not require a social network, centralized identity provider, or JavaScript.
-* Implementations should remain simple enough for personal websites of any size or technology stack.
+- **Joshness is declared, never derived.**
+- Participation is voluntary.
+- Identity and participation are separate.
+- Participants retain control of their own websites and infrastructure.
+- No Josh outranks another Josh.
+- Participation does not imply trust.
+- Open and boring web standards are preferred over proprietary infrastructure.
+- Participation should not require a social network, centralized identity provider, or JavaScript.
+- Implementations should remain simple enough for personal websites of any size or technology stack.
 
 ## Specifications
 
@@ -38,12 +38,12 @@ No RFCs have been accepted yet.
 
 Known operational publishers of RFC-JOSH-0002 version 1:
 
-| Site | Identity | Operation | Status |
-| --- | --- | --- | --- |
-| [joshuamorris.info](https://joshuamorris.info/) | Affirmed Josh Identity | Project-controlled | Operational |
-| [joshternet.org](https://joshternet.org/) | Undeclared Josh Identity | Project-controlled | Operational |
-| [joshtronic.com](https://joshtronic.com/) | Affirmed Josh Identity | Independent | Operational |
-| [www.joshuabaker.com](https://www.joshuabaker.com/) | Affirmed Josh Identity | Independent | Operational |
+| Site                                                | Identity                 | Operation          | Status      |
+| --------------------------------------------------- | ------------------------ | ------------------ | ----------- |
+| [joshuamorris.info](https://joshuamorris.info/)     | Affirmed Josh Identity   | Project-controlled | Operational |
+| [joshternet.org](https://joshternet.org/)           | Undeclared Josh Identity | Project-controlled | Operational |
+| [joshtronic.com](https://joshtronic.com/)           | Affirmed Josh Identity   | Independent        | Operational |
+| [www.joshuabaker.com](https://www.joshuabaker.com/) | Affirmed Josh Identity   | Independent        | Operational |
 
 Their Joshternet declarations are published at:
 
@@ -95,6 +95,32 @@ not claim that `josh` is currently registered.
 
 External technical review is required before a provisional registration request
 is submitted.
+
+## External technical review
+
+RFC-JOSH-0002 is currently being prepared for independent technical review.
+
+The
+[RFC-JOSH-0002 external technical review packet](review/rfc-josh-0002/README.md)
+collects the frozen protocol baseline, conformance evidence, interoperability
+evidence, registration questions, security questions, review checklist, and
+prepared outreach material.
+
+The primary review question is:
+
+> Can somebody implement `/.well-known/josh` correctly using only
+> RFC-JOSH-0002?
+
+The review packet also asks for feedback on the suitability of the bare `josh`
+Well-Known URI suffix, the stability and governance of the specification
+reference, and RFC 8615 browser-interaction considerations.
+
+Preparing the review packet does not mean that external review has already
+occurred. Feedback will be recorded separately as it is received and
+classified as protocol, conformance, implementation, security,
+registry-process, editorial, or optional feedback before changes are made.
+
+No IANA registration request is submitted as part of this review phase.
 
 ## Related software
 
