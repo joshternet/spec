@@ -1,0 +1,38 @@
+{
+  "id": "undeclared",
+  "description": "A valid version 1 declaration with no Josh identity declaration.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "4",
+    "5",
+    "6",
+    "7.3",
+    "9",
+    "12"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "response": {
+        "status": 200,
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": "{\"version\":1}"
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "valid-v1",
+    "participation": "declared",
+    "identity": "undeclared"
+  }
+}

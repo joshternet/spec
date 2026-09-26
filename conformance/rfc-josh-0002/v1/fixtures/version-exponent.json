@@ -1,0 +1,35 @@
+{
+  "id": "version-exponent",
+  "description": "A declaration whose version uses exponent notation instead of the required integer syntax.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "6",
+    "8",
+    "12"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "response": {
+        "status": 200,
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": "{\"version\":1e0}"
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "invalid",
+    "participation": "not-declared",
+    "identity": "not-applicable"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "unknown-member",
+  "description": "A valid version 1 declaration containing an unknown member that does not alter declaration semantics.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "5",
+    "6",
+    "7.1",
+    "8",
+    "12",
+    "13"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "response": {
+        "status": 200,
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": "{\"version\":1,\"josh\":true,\"favoriteColor\":\"blue\"}"
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "valid-v1",
+    "participation": "declared",
+    "identity": "affirmed"
+  }
+}

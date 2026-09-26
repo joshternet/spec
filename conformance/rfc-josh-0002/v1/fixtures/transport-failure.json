@@ -1,0 +1,27 @@
+{
+  "id": "transport-failure",
+  "description": "A transport-level retrieval failure does not establish that the declaration has been intentionally withdrawn.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "9",
+    "11"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "failure": {
+        "kind": "transport"
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "temporary-failure",
+    "participation": "indeterminate",
+    "identity": "not-applicable"
+  }
+}

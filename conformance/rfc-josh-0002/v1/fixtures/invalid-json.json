@@ -1,0 +1,35 @@
+{
+  "id": "invalid-json",
+  "description": "A declaration response whose body is not valid JSON.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "5",
+    "9",
+    "12"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "response": {
+        "status": 200,
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": "{\"version\":"
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "invalid",
+    "participation": "not-declared",
+    "identity": "not-applicable"
+  }
+}

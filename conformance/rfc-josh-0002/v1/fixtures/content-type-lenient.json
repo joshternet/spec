@@ -1,0 +1,37 @@
+{
+  "id": "content-type-lenient",
+  "description": "A valid version 1 declaration returned with a non-application/json Content-Type remains valid because the media type requirement on publishers is a SHOULD.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "5",
+    "6",
+    "7.1",
+    "8",
+    "12"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "response": {
+        "status": 200,
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "text/plain"
+          }
+        ],
+        "body": "{\"version\":1,\"josh\":true}"
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "valid-v1",
+    "participation": "declared",
+    "identity": "affirmed"
+  }
+}

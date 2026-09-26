@@ -1,0 +1,35 @@
+{
+  "id": "cross-origin-redirect",
+  "description": "A cross-origin redirect must not be treated as a declaration for the original origin.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "10",
+    "14",
+    "17"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "response": {
+        "status": 302,
+        "headers": [
+          {
+            "name": "Location",
+            "value": "https://other.example.invalid/.well-known/josh"
+          }
+        ],
+        "body": ""
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "cross-origin-redirect",
+    "participation": "not-declared",
+    "identity": "not-applicable"
+  }
+}

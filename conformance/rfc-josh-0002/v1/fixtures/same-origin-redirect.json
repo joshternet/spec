@@ -1,0 +1,55 @@
+{
+  "id": "same-origin-redirect",
+  "description": "A consumer that supports same-origin redirects may follow the redirect and interpret the resulting valid declaration for the original origin.",
+  "role": "consumer",
+  "conformance": "optional-capability",
+  "capability": "same-origin-redirects",
+  "rfc_sections": [
+    "4",
+    "5",
+    "6",
+    "7.1",
+    "9",
+    "10"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "response": {
+        "status": 302,
+        "headers": [
+          {
+            "name": "Location",
+            "value": "https://example.invalid/josh-declaration"
+          }
+        ],
+        "body": ""
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/josh-declaration"
+      },
+      "response": {
+        "status": 200,
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": "{\"version\":1,\"josh\":true}"
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "valid-v1",
+    "participation": "declared",
+    "identity": "affirmed"
+  }
+}

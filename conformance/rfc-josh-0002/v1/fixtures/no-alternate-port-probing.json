@@ -1,0 +1,30 @@
+{
+  "id": "no-alternate-port-probing",
+  "description": "A consumer must not probe another port when no declaration is published on the port belonging to the origin being evaluated.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "3.1",
+    "11",
+    "14"
+  ],
+  "origin": "https://example.invalid:8443",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid:8443/.well-known/josh"
+      },
+      "response": {
+        "status": 404,
+        "headers": [],
+        "body": ""
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "absent",
+    "participation": "not-declared",
+    "identity": "not-applicable"
+  }
+}

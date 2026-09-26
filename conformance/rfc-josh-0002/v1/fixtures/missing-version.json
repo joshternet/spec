@@ -1,0 +1,35 @@
+{
+  "id": "missing-version",
+  "description": "A declaration object that omits the required version member.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "5",
+    "6",
+    "12"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "response": {
+        "status": 200,
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": "{\"josh\":true}"
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "invalid",
+    "participation": "not-declared",
+    "identity": "not-applicable"
+  }
+}

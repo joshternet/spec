@@ -1,0 +1,29 @@
+{
+  "id": "not-found",
+  "description": "A 404 response indicates that no declaration is currently published for the origin.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "9",
+    "11"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "response": {
+        "status": 404,
+        "headers": [],
+        "body": ""
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "absent",
+    "participation": "not-declared",
+    "identity": "not-applicable"
+  }
+}

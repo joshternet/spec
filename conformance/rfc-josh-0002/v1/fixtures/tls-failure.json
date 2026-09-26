@@ -1,0 +1,28 @@
+{
+  "id": "tls-failure",
+  "description": "A TLS failure prevents retrieval and does not establish that the declaration has been intentionally withdrawn.",
+  "role": "consumer",
+  "conformance": "required",
+  "rfc_sections": [
+    "9",
+    "11",
+    "17"
+  ],
+  "origin": "https://example.invalid",
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "uri": "https://example.invalid/.well-known/josh"
+      },
+      "failure": {
+        "kind": "tls"
+      }
+    }
+  ],
+  "expected": {
+    "declaration": "temporary-failure",
+    "participation": "indeterminate",
+    "identity": "not-applicable"
+  }
+}
