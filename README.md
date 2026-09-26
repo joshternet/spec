@@ -78,6 +78,24 @@ is currently documented.
 The interoperability record does not define protocol behavior. RFC-JOSH-0002
 remains authoritative.
 
+## IANA preparation
+
+RFC-JOSH-0002 is being prepared for a proposed provisional registration of the
+`josh` suffix in the IANA Well-Known URIs registry.
+
+The
+[RFC-JOSH-0002 IANA registration preparation](iana/rfc-josh-0002/README.md)
+document contains the proposed registration fields, the RFC 8615 audit, and the
+remaining external-review questions.
+
+That document is non-normative. It does not change RFC-JOSH-0002.
+
+No IANA registration request has been submitted yet, and this repository does
+not claim that `josh` is currently registered.
+
+External technical review is required before a provisional registration request
+is submitted.
+
 ## Related software
 
 [JoshBot](https://github.com/joshternet/joshbot) is the Joshternet discovery, verification, and public registry crawler.
