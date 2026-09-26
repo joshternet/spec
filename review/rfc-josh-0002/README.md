@@ -383,15 +383,15 @@ The version value must use integer-number syntax.
 
 These are not valid version 1 values:
 
-```json
+```text
 {
   "version": 1.0
 }
 ```
 
-```json
+```text
 {
-  "version": 1
+  "version": 1e0
 }
 ```
 
